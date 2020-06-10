@@ -1,0 +1,1 @@
+"use strict";$(".head-list>li").eq(0).children().addClass("active").parent().siblings().children().removeClass("active");

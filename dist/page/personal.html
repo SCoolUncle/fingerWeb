@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Document</title><link rel=stylesheet href=../css/common.css><link rel=stylesheet href=../css/personal.css><link rel=stylesheet href=../css/headfoot.css><link rel=stylesheet href=../css/shopPop.css><link rel=stylesheet href=../lib/iconfont/iconfont.css><script src=../lib/jquery.min.js></script><script src=../js/cookies.js></script></head><body><div id=basic class=container-wrap><div class=container><div class=user-head><label><form method=POST><input type=file name=file id=headimg> <input type=text name=userName class=username></form><div class=sethead>上传头像</div></label></div><div class=basic-info><p><span class=nickname>您还没有登录</span> <button class=setNickName>修改昵称</button></p><p><span>ID:<strong class=userid>......</strong></span> <button class=out>退出</button></p></div></div></div><div id=personalnav class=container><ul><li class=active>个人信息</li><li>我的店铺</li><li>订单管理</li><li>我的收藏</li></ul></div><div id=pContent class=container-wrap><div class="user-info container active"><div class=info-content><div><p>收件人姓名 <span>*</span></p><input type=text class=yourname value=您还没有登录></div><div><p>联系方式 <span>*</span></p><input type=text class=yourphone value=......></div><div><p>收件人地址 <span>*</span></p><input type=text class=youraddress value=您的收件地址></div><div><p>备注信息</p><input type=text class=yourremarks placeholder=备注信息字数不能超过50></div><button class=confirm-btn>保存修改</button></div></div></div><script src=../js/head.js></script><script src=../js/foot.js></script><script>let cookieres = getcookie().login;
+        let timecookie = getcookie().slogin;
+        if(cookieres ==undefined && timecookie == undefined){
+            window.location.href = `./index.html`;
+        }
+        $.ajax({
+            url: '../php/getHead.php',
+            type: 'post',
+            data: {
+                userName: cookieres
+            },
+            dataType: 'json',
+            success: function (res) {
+                if(res[0] !== 0){
+                           //设定头像中的value 默认不可见的 隐藏在头像背后
+                $('.username').val(cookieres);
+                let link = res[0].headPortrait;
+                //获取头像
+                $('.user-head').css('background', `url(${link}) `).css('backgroundSize', 'cover');
+                //获取昵称
+                $('.nickname').html(res[0].nickname);
+                //获取id
+                $('.userid').html(res[0].username);
+                //收件人姓名
+                $('.yourname').val(res[0].addressee);
+                $('.yourphone').val(res[0].phone);
+                $('.youraddress').val(res[0].address);
+                $('.yourremarks').val(res[0].remarks);
+                }
+         
+            }
+        });
+        //退出
+        $('.out').click(function () {
+            setcookie('login', '', -1, '/');
+            setcookie('slogin', '', -1, '/');
+            window.location.href = './loginpage.html';
+        });
+        //头像的上传
+        $('form').on('change', function () {
+            
+            console.log('hello');
+            const fileData = new FormData( $('form')[0] );
+            console.log(fileData);
+            $.ajax({
+                url:'../php/sethead.php',
+                type:'post',
+                dataType:'json',
+                data:fileData,
+                processData:false,
+                contentType:false,
+                success:function(res){
+                    if(res[0] == 1){
+                        window.location.reload();
+                    }
+                    window.alert( res[1] );
+                }
+            })
+        });
+        //修改个人信息
+        $('.confirm-btn').click(function(){
+            //判断电话号码格式
+            let phoneNumber = $('.yourphone').val();
+            let reg = /^1[3-9][0-9]{9}$/;
+            if(reg.test(phoneNumber)){
+                $.ajax({
+                    url:'../php/setPinfo.php',
+                    type:'post',
+                    data:{
+                        userName:cookieres,
+                        address:  $('.youraddress').val(),
+                        phone:$('.yourphone').val(),
+                        remarks:$('.yourremarks').val(),
+                        addressee:$('.yourname').val(),
+
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        if(res === 1){
+                            alert('信息修改成功！');
+                        }else{
+                            alert('请检查您的信息格式!');
+                        }
+                    }
+                });
+            }else{
+                alert('电话号码格式有误！');
+                return;
+            }
+        });
+        //修改昵称
+        $('.setNickName').click(function(){
+            let newNickName = window.prompt('请输入你想要的昵称嗯~ o(*￣▽￣*)o');
+            if( newNickName != null){
+                console.log('hello');
+                $.ajax({
+                    url:'../php/setNickName.php',
+                    type:'post',
+                    data:{
+                        userName:cookieres,
+                        nickName:newNickName
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        if( res === 1){
+                            alert('设置成功！');
+                             //将新设置的昵称写入,这里直接获取输入内容了
+                        $('.nickname').html(newNickName);
+
+                        }else{
+                            alert('设置失败！');
+                        }
+                       
+                    }
+                });
+            }
+        }
+           
+        );</script></body></html>

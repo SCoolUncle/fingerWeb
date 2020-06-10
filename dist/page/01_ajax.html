@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Document</title></head><body><form method=POST enctype=multipart/form-data>账号:<input type=text name=userName><br>密码:<input type=password name=userPwd><br>头像:<input type=file name=file[]><br><button>提交</button></form><script src=./jquery.min.js></script><script>// 一定是给form表单标签,添加 submit 提交事件
+        $('form').submit(function(e){
+            // 阻止 默认事件 的执行 否则就直接提交了
+            // 这行代码是必须的
+            e.preventDefault();  
+            
+            // 通过 formDate() 来获取 form 标签对象的 数据信息
+            // 必须要注意,这个一个js语法 formDate() 中 必须是 js标签对象
+            // jQuery标签对象,一定是一个伪数组,jQuery标签对象[索引],转化为 js 标签对象
+            // form表单标签的数据,就存储在 fileData 对象中
+
+            // js标签对象(单一对象) , 转化为 jq标签对象 $(js标签对象)
+            // jq标签对象(伪数组) , 转化为 js标签对象 $(jq语法获取标签)[索引下标]
+
+            // 如果是之前 通过标签的value属性,只能获取到文件的路径,不能获取到相关的5项信息
+            // 这些信息是通过 form 标签发送给 后端程序的
+
+            // ajax 要完成传参这个5项数据信息,必须要通过 FormData() 构造函数 
+            // 来 获取 form 标签中 存储的数据信息
+            // 获取的 是 所有的数据信息
+            // 包括 各种input标签 上传文件 select textarea 等,都可以正确的获取
+            // 后端 PHP 程序 按照 指定的预定义变量 $_GET $_POST $_FILES,来接受存储参数
+
+            // const oForm = document.querySelector('from');
+            // const fileData = new FormData( oForm );
+
+            const fileData = new FormData( $('form')[0] );
+
+            // 通过 ajax 完成 传参
+            // 传参方式必须是 post
+            // processData:false, 参数的序列化,必须是false
+            // contentType:false, 请求体格式,必须是false
+            // 
+            $.ajax({
+                url:'./02_demo.php',
+                type:'post',
+                dataType:'json',
+                data:fileData,
+                processData:false,
+                contentType:false,
+                success:function(res){
+                    // 目前给我们的响应体是一个数组
+                    // 数组第一个单元,数值表示上传是否成功 1 是成功 0 是失败
+                    // 数组第二个单元,是对上传信息的描述
+                    console.log(res); 
+                    // 提示信息,可以弹窗,也可以写入页面,总之要根据实际项目需求而定
+                    window.alert( res[1] );
+                }
+            })
+        })
+
+        // 总结:
+        // 使用 ajax 传参 和 使用 form表单 传参不同
+        // 1, 给 form标签 添加 submit 事件
+        // 2, 先使用  e.preventDefault();  来阻止表单的默认提交事件
+        // 3, 使用 FormDate() 构造函数 来获取 form表单标签的所有数据参数
+        //      注意: formDate() 是 JavaScript 的内置构造函数 , 参数必须是JavaScript语法的标签对象
+        // 4, 使用 ajax 来 完成 传参
+        //      可以使用 原生JavaScript 编写 ajax 传参
+        //      也可以使用更简单的 jQuery 封装的 ajax 传参
+        //      最终我们一定都会使用 框架语法
+        //      参数是 FormData() 创建的 实例化对象
+        // 5, PHP程序中,会自动使用 预定义变量 $_GET $_POST $_FILES 来存储数据</script></body></html>
