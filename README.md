@@ -1,0 +1,2 @@
+＃fingerWeb
+这是一个JavaScript入门的练习，使用jQuery和原生JavaScript编写了一个残缺的购物网站页面
