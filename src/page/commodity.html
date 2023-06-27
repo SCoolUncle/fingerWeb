@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宝贝_精选</title>
+    <!-- <link rel="stylesheet" href="./jquery-pagination/pagination.css"> -->
+    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/floatwidow.css">
+    <link rel="stylesheet" href="../css/commodity.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../lib/iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/headfoot.css">
+    <link rel="stylesheet" href="../css/shopPop.css">
+    <link rel="stylesheet" href="../css/floatwidow.css">
+    <link rel="stylesheet" href="../lib/swiper/css/swiper.min.css">
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../js/cookies.js"></script>
+
+
+</head>
+
+<body>
+    <!-- 头部 -->
+
+    <!-- banner -->
+    <div id="banner" class="container-wrap">
+        <div id="box">
+            <ul class="imgbox">
+                <li class="active">
+                    <img src="../images/banner2.png" alt="">
+                </li>
+                <li>
+                    <img src="../images/banner3.png" alt="">
+                </li>
+                <li>
+                    <img src="../images/banner.png" alt="">
+                </li>
+            </ul>
+            <ul class="swiper-btn">
+                <li>&lt;</li>
+                <li>&gt;</li>
+            </ul>
+            <ul class="swiper">
+            </ul>
+        </div>
+    </div>
+    <!-- topSale -->
+    <div id="saleTop" class="container">
+        <div id="setTitle">
+            <h2>销量</h2>
+            <h3>RECOMMENDATION</h3>
+        </div>
+        <div class="salelist-box">
+            <ul class="salelist">
+                <!-- <a href="../page/detail.html?goods_id=${item.goods_id}">
+                    <li>
+                    <img src="${item.goods_big_logo}" alt="" width="230" height="230">
+                    <p>
+                    ${item.goods_name}
+                    </p>
+                    <p>
+                        <i class="iconfont icon-shoucang0"></i>
+                        <i class="iconfont icon-shoucang0"></i>
+                        <i class="iconfont icon-shoucang0"></i>
+                        <i class="iconfont icon-shoucang0"></i>
+                        <i class="iconfont icon-shoucang0"></i>
+                    </p>
+                    <div>
+                        <span>${item.goods_price}￥</span>
+                        <button>
+                            Add
+                        </button>
+                    </div>
+                    </li>
+                    </a> -->
+            </ul>
+            <!-- 此处第按钮个数由子元素 / 5 获得 -->
+            <ul class="saleswiper">
+                <li class="active"></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <!--好评 -->
+    <div id="praise" class="container">
+        <div id="setTitle">
+            <h2>好评</h2>
+            <h3>PRAISE</h3>
+        </div>
+        <div class="content-box">
+            <!-- <ul>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+                <li>
+                    <img src="" alt="">
+                </li>
+            </ul> -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- 动态添加 -->
+                </div>
+                <!-- 如果需要导航按钮 -->
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
+            </div>
+            <!-- <div class="nextbtn">
+                NEXT
+                <i class="iconfont icon-sheng"></i>
+            </div> -->
+        </div>
+    </div>
+    <!--分类  -->
+    <div id="more" class="container-wrap clear">
+        <div id="setTitle">
+            <h2>分类</h2>
+            <h3>RECOMMENDATION</h3>
+        </div>
+        <ul class="menulist container-wrap ">
+            <li class="active">数码家电</li>
+            <li>智能酷玩</li>
+            <li>潮流数码</li>
+            <li>智能家居</li>
+
+        </ul>
+
+        <div class="content-box container ">
+            <ul class="clear"></ul>
+        </div>
+        <div class="navigation container M-box"> </div>
+    </div>
+    <script src="../lib/swiper/js/swiper.min.js"></script>
+    <script src="../js/head.js"></script>
+    <script src="../js/opactiybanner.js"></script>
+    <script src="../lib/jquery-pagination/jquery.pagination.js"></script>
+    <script>
+        $(document).ready(function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                // direction: 'row', // 垂直切换选项
+                loop: true, // 循环模式选项
+                autoplay: {
+                    delay: 3000,//1秒切换一次
+                },
+                slidesPerView: 'auto',
+                loopedSlides: 5,
+
+                effect: 'coverflow',
+                slidesPerView: 3,
+                centeredSlides: true,
+                coverflowEffect: {
+                    rotate: 30,
+                    stretch: 10,
+                    depth: 60,
+                    modifier: 1,
+                    slideShadows: true
+                },
+            })
+        })
+
+    </script>
+    <script src="../js/commodity.js"></script>
+    <script src="../js/foot.js"></script>
+    <script src="../js/navswitch2.js"></script>
+    <script src="../js/floatmenu.js"></script>
+
+
+</body>
+
+</html>

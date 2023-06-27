@@ -1,0 +1,84 @@
+*{
+    margin:0;
+    padding:0;
+}
+h1,h2,h3{
+    margin-block-start:0;
+}
+a{
+    text-decoration: none;
+    color:#333;
+}
+img{
+    display:block;
+}
+ul{
+    list-style:none;
+}
+.clear:after{
+    display:block;
+    content:"";
+    clear:both;
+}
+
+.l{
+    float:left;
+}
+.r{
+    float:right;
+}
+
+.container{
+    width:1200px;
+    margin: 0 auto;
+    position:relative;
+    padding:0 ;
+}
+.container-wrap{
+    position:relative;
+}
+html{
+    font-family: 'notoSans';
+    color:#333;
+    font-size: 14px;
+}
+body{
+    background:#f4f4f4;
+    padding-top:80px;
+}
+
+/* 字体引入 */
+@font-face{
+    font-family: 'notoSans';
+    src: 
+        /* url(../iconfont/NotoSansHans-Medium.otf), */
+        url(../lib/iconfont/NotoSansHans-Regular.otf)
+        /* url(../iconfont/NotoSansHans-Light.otf) */
+    ;
+    
+}
+
+/* 标题 */
+#setTitle {
+    height:80px;
+    line-height: 50px;
+    margin-top:30px;
+}
+#setTitle  h2{
+    font-size:22px;
+    color:#235952;
+    text-align:center;
+    line-height:25px;
+    font-weight: 600;       
+}
+#setTitle  h3{
+    font-size:14px;
+    color:#96b1ac;
+    text-align:center;
+    line-height: 25px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+
+/* 尾部框架 */

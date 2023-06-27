@@ -1,0 +1,1 @@
+$('.head-list>li').eq(2).children().addClass('active').parent().siblings().children().removeClass('active');

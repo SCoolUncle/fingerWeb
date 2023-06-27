@@ -1,0 +1,238 @@
+/* 外部 */
+
+
+.cart-item {
+  display: flex;
+  padding: 10px 0px;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-item > .left {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.media img {
+  width: 100px;
+  height: 100px;
+}
+
+h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+p {
+  font-size: 20px;
+  color: red;
+}
+
+#container {
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+#container .container-wrap {
+  display: flex;
+}
+
+#container .content-left {
+  flex: 1;
+  padding: 0px 30px;
+  background: #fff;
+}
+
+#container .content-left .shoptitle {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  height: 80px;
+  align-items: center;
+  background: #fff;
+  padding: 0px 20px;
+  border-bottom: 2px #ccc solid;
+}
+
+#container .content-left .shoptitle span {
+  background: #f4f4f4;
+}
+#container .content-left .product-list .panel-info{
+  background:none;
+  border:none;
+}
+#container .content-left .product-list .panel-info .panel-footer{
+  background:none;
+  border:none;
+}
+#container .content-left .product-list .panel-info .panel-footer .shopCarStatus{
+  
+}
+#container .content-left .product-list .panel-info .panel-footer .shopCarStatus img{
+  /* height:400px; */
+}
+#container .content-left .product-list .panel-info span{
+  color:#ff6000;
+}
+#container .content-left .product-list .panel-info .btn-danger{
+  background:none;
+  border:1px solid #ff9000;
+  padding:5px 20px;
+}
+#container .content-left .product-list .panel-info .btn-danger .glyphicon{
+  color:#ff9000;
+}
+#container .content-left .product-list .panel-info .btn-danger:hover{
+  background:#ff9000;
+}
+#container .content-left .product-list .panel-info .btn-danger:hover i{
+  color:#fff;
+}
+#container .content-left .product-list .panel-footer{
+  border:none;
+}
+#container .content-left .product-list .panel-footer .cart-list{
+  border:none;
+}
+
+
+/* 右侧信息栏 */
+#container .container-wrap .pay-information {
+  width: 400px;
+  background: #f4f4f4;
+  padding: 0px 30px;
+}
+
+#container .container-wrap .pay-information .search-box {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom:2px #ccc solid;
+}
+
+#container .container-wrap .pay-information .search-box input {
+  display: inline-block;
+  height: 40px;
+  border: 1px #ccc solid;
+  flex: 1;
+  box-sizing: border-box;
+  padding:0px 20px;
+}
+
+#container .container-wrap .pay-information .search-box button{
+  display: inline-block;
+  height:40px;
+  border:1px #235952 solid;
+  background:#235952;
+  color:#fff;
+  text-align: center;
+  line-height: 40px;
+  width:100px;
+}
+#container .container-wrap .pay-information .check-box{
+  padding:20px 0px;
+}
+#container .container-wrap .pay-information .check-box button{
+  border:none;
+  background:#7ebdb4;
+  font-size: 14px;
+  padding:5px;
+  color:#fff;
+  margin-right:20px;
+}
+#container .container-wrap .pay-information .product-information{
+  display: flex;
+  border-bottom:1px #ccc solid;
+  padding:20px 0px;
+}
+#container .container-wrap .pay-information .product-information .p-amount{
+  flex: 1;
+  
+}
+#container .container-wrap .pay-information .product-information  p{
+  font-size:14px;
+  color:#333;
+}
+#container .container-wrap .pay-information .product-information  p span{
+  font-size:16px;
+  color:#ff6000;
+  padding:0px 10px;
+}
+#container .container-wrap .pay-information .product-information .p-kind{
+  flex: 1;
+}
+#container .container-wrap .pay-information .pay-amount{
+  padding:20px 0px;
+  display: flex;
+  align-items: center;
+}
+#container .container-wrap .pay-information .pay-amount span{
+  color:#000;
+  font-size: 20px;
+  font-weight: 800;
+}
+#container .container-wrap .pay-information .pay-amount strong{
+  color:#fe346e;
+  font-size: 16px;
+  margin-left:30px;
+  font-size:30px;
+  font-weight: 800;
+}
+#container .container-wrap .pay-information .pay-confirm{
+  height:40px;
+  width:200px;
+  background:#ff9000;
+  color:#fff;
+  font-size: 16px;
+  font-weight:800;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom:20px;
+
+}
+#container .container-wrap .pay-information .note{
+  border-top:1px #ccc solid;
+  padding:20px 0px;
+  border-bottom:1px #ccc solid;
+}
+#container .container-wrap .pay-information .note p{
+  color:#666;
+  font-size: 14px;
+}
+#container .container-wrap .pay-information .mustinfo{
+  padding:20px 0;
+}
+#container .container-wrap .pay-information .mustinfo p{
+  font-size: 14px;
+  color:#999;
+  display: flex;
+  justify-content: space-between;
+}
+#container .container-wrap .pay-information .mustinfo p:last-child{
+  justify-content: flex-end;
+  color:#333;
+}
+#container .container-wrap .pay-information .mustinfo p:last-child a{
+  padding:0px 5px;
+  display: block;
+  border:1px #ccc solid;
+  color:#7ebdb4;
+}
+#container .container-wrap .pay-information .mustinfo p span{
+  font-size: 14px;
+  color:#666;
+}
+#container .container-wrap .pay-information .slogan p{
+  color:#333;
+  font-size: 20px;
+  line-height: 40px;
+}

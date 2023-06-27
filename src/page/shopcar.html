@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/common.css">
+
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/shopcar.css">
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../js/cookies.js"></script>
+</head>
+
+<body>
+    <div id="container" class="container-wrap">
+        <div class="container-wrap">
+            <div class="content-left">
+                <div class="shoptitle">
+                    <span>购物车 SHOPPING CART</span>
+                    <a href="javascript:;">管理</a>
+                </div>
+                <div class="product-list ">
+
+                </div>
+            </div>
+            <div class="pay-information">
+                <div class="search-box">
+                    <input type="text" placeholder="输入商品名称">
+                    <button>搜索</button>
+                </div>
+                <div class="check-box">
+                    <button class=" setbtn" name="all">全选</button>
+                    <button class=" setbtn" name="no">不选</button>
+                    <button class=" setbtn" name="not">反选</button>
+                </div>
+                <div class="product-information">
+                    <div class="p-amount">
+                        <p>〓商品数量</p>
+                        <p class="amount"><span>0</span>件商品</p>
+                    </div>
+                    <div class="p-kind">
+                        <p>〓商品种类</p>
+                        <p class="kind"><span>0</span>种商品</p>
+                    </div>
+                </div>
+                <div class="pay-amount">
+                    <span>您需要支付:</span><strong>0</strong>
+                </div>
+                <div class="pay-confirm">确认支付</div>
+                <div class="note">
+                    <p>• 本商城将全部开具发票</p>
+                    <p>• 配送方式: <span>普通配送 快递 免邮</span></p>
+                    <p>• 不提供运费险！</p>
+                </div>
+                <div class="mustinfo">
+                    <p>收件人姓名: <span class="carName">未填写</span></p>
+                    <p>收件地址: <span class="carAddress">未填写</span></p>
+                    <p>联系电话: <span class="carPhone">未填写</span></p>
+                    <p><a href="./personal.html"> 修改信息</a></p>
+                </div>
+                <div class="slogan">
+                    <p>SMART LIFE ON YOUR FINGERTIPS</p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+    {
+        let cookies = getcookie().login;
+        //更新地址信息
+        $.ajax({
+            url:'../php/getHead.php',
+            type:'post',
+            data:{
+                userName:cookies
+            },
+            dataType:'json',
+            success:function(res){
+                console.log(res);
+                if( res[0] !== 0){
+                    $('.carName').html(res[0].addressee);
+                    $('.carAddress').html(res[0].address);
+                    $('.carPhone').html(res[0].phone);
+                }
+            }
+        });
+
+        // 1,获取 localStorage 中的数据信息
+        const cateArr = JSON.parse(localStorage.getItem('cart'));
+        setPage(cateArr);
+        function setPage(array) {
+            // 定义变量来存储数据,定义在函数中
+            let NUM = 0;
+            let TYPE = 0;
+            let PAY = 0;
+            let str = `
+
+            <div class="panel panel-info ">
+   
+            <div class="panel-footer">
+            
+            `;
+
+            // 第二部分是商品的信息部分,是根据 购物车信息 循环遍历生成的
+            // 定义写的数据,选中效果,使用三元运算符,根据 buy的信息来判断
+            // 定义 减 标签 如果数值是 1,禁用标签,不能再减了
+            // 定义 加 标签 如果数值是 库存,禁用标签,不能再加了
+            console.log(array);
+            if (array == null || array.length == 0) {
+                str += `<div class="shopCarStatus">
+                    <img src="../images/shopcarerror.jpg" alt="" width="100%" height="100%">
+                    </div>`;
+                $('.product-list').html(str);
+
+            } else {
+                str += `<ul class="cart-list">`;
+                array.forEach(function (item) {
+                    str += `<li class="cart-item">
+              <div class="left">
+                <input name="checked" goods_id="${item.goods_id}" type="checkbox" ${item.buy === true ? 'checked' : ''}>
+              </div>
+              <div class="right">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="#">
+                      <img class="media-object" src="${item.goods_small_logo}" alt="...">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">${item.goods_name}</h4>
+                    <p>
+                      <span>${item.goods_price} 元</span>
+                    </p>
+                    <div class="btn-group pull-right" role="group" aria-label="...">
+                      <button type="button" name="lost" goods_id="${item.goods_id}" class="btn btn-default" ${item.num == 1 ? 'disabled' : ''}>-</button>
+                      <button type="button" class="btn btn-default" disabled>${item.num}</button>
+                      <button type="button" name="odd" goods_id="${item.goods_id}" class="btn btn-default" ${item.num == item.goods_number ? 'disabled' : ''}>+</button>
+                    </div>
+                    <button name="del" goods_id="${item.goods_id}"  class="del btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                  </div>
+                </div>
+              </div>
+            </li>`;
+
+
+                    if (item.buy === true) {
+                        TYPE++;           // 种类++
+                        NUM += item.num;  // 数量是 += 累加
+                        PAY += item.num * item.goods_price;   // 钱数是 数量*单价
+                    }
+
+                })
+
+                // 计算判断数据信息
+                // 第三部分
+                // 最后结束的部分
+                // 有小数参与,会造成数值计算时精度丢失,需要保留两位小数
+                $('.kind>span').html(`${TYPE}`);
+                $('.amount>span').html(`${NUM}`);
+                $('.pay-amount strong').html(`${parseInt(PAY * 100) / 100}元`);
+                str += `</ul>
+                    </div>
+                </div>
+                </div>
+                
+                
+                `;
+                $('.product-list').html(str);
+
+            }
+        }
+
+        // 通过事件委托,给动态生成的内容,添加点击事件
+        // 如果只是少量标签,使用jQuery事件委托更简单
+        // 如果是大量事件委托,用js的语法更简单
+
+        const oDiv = document.querySelector('.check-box');
+
+        oDiv.addEventListener('click', function (e) {
+            // 点击的是全选标签
+            if (e.target.getAttribute('name') === 'all') {
+                // 给数组中的所有数据,buy属性都设定为true
+                cateArr.forEach(function (item) {
+                    item.buy = true;
+                })
+            }
+
+            // 点击的是不选标签
+            if (e.target.getAttribute('name') === 'no') {
+                // 给数组中的所有数据,buy属性都设定为false
+                cateArr.forEach(function (item) {
+                    item.buy = false;
+                })
+            }
+
+            // 点击的是反选标签
+            if (e.target.getAttribute('name') === 'not') {
+                // 给数组中的所有数据,buy属性都设定为原始数值取反
+                cateArr.forEach(function (item) {
+                    item.buy = !(item.buy);
+                })
+            }
+
+            if (e.target.getAttribute('name') === 'checked') {
+                // 获取 goods_id 的属性
+                let goods_id = e.target.getAttribute('goods_id');
+                cateArr.forEach(function (item) {
+                    // 如果当前item的goods_id 与 标签中存储的goods_id相同
+                    if (item.goods_id === goods_id) {
+                        // 设定 数据 的 购买数据,是复选框当前的数据
+                        item.buy = $(e.target).prop('checked');
+                    }
+                })
+
+            }
+            window.location.reload();
+            // 将新的数组,写入到页面中
+            setPage(cateArr);
+            // 把新数组的数据,写入到 localStorage 中
+            localStorage.setItem('cart', JSON.stringify(cateArr));
+        });
+
+        const oDiv2 = document.querySelector('.media-body');
+        oDiv2.addEventListener('click', function (e) {
+            // 我不要了 按钮
+            if (e.target.getAttribute('name') === 'del') {
+                // 获取 goods_id 的属性
+                let goods_id = e.target.getAttribute('goods_id');
+                cateArr.forEach(function (item, key) {
+                    // 如果当前item的goods_id 与 标签中存储的goods_id相同
+                    if (item.goods_id === goods_id) {
+                        // 从当前的索引下标开始,删除数组中的一个数据单元
+                        cateArr.splice(key, 1);
+                    }
+                })
+            }
+
+            // 添加 按钮
+            if (e.target.getAttribute('name') === 'odd') {
+                // 获取 goods_id 的属性
+                let goods_id = e.target.getAttribute('goods_id');
+                cateArr.forEach(function (item, key) {
+                    // 如果当前item的goods_id 与 标签中存储的goods_id相同
+                    if (item.goods_id === goods_id) {
+                        // 购买数量++
+                        item.num++;
+                    }
+                })
+            }
+
+            // 减少 按钮
+            if (e.target.getAttribute('name') === 'lost') {
+                console.log('hello');
+                // 获取 goods_id 的属性
+                let goods_id = e.target.getAttribute('goods_id');
+                cateArr.forEach(function (item, key) {
+                    // 如果当前item的goods_id 与 标签中存储的goods_id相同
+                    if (item.goods_id === goods_id) {
+                        // 购买数量--
+                        item.num--;
+                    }
+                })
+            }
+
+            window.location.reload();
+            setPage(cateArr);
+            localStorage.setItem('cart', JSON.stringify(cateArr));
+        });
+    }
+    </script>
+
+</body>
+
+</html>

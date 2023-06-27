@@ -1,0 +1,390 @@
+.container{
+  padding:0;
+}
+ul {
+  list-style: none;
+}
+#banner #box {
+  width: 100%;
+  height: 460px;
+  margin: 0 auto;
+  position: relative;
+
+}
+
+#banner #box .imgbox {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#banner #box .imgbox li {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: 1s;
+}
+
+#banner #box .imgbox li img {
+  width: 100%;
+}
+
+#banner #box .imgbox .active {
+  opacity: 1;
+}
+
+#banner #box .swiper {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: 20px;
+}
+
+#banner #box .swiper li {
+  margin: 0px 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00000080;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+#banner #box .swiper .active {
+  border: 2px solid #fff;
+}
+
+#banner #box .swiper-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#banner #box .swiper-btn li {
+  width: 40px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 30px;
+  background: #ffffff50;
+  cursor: pointer;
+}
+
+#banner #box .swiper-btn li:hover {
+  background: #00000080;
+  color: #fff;
+}
+
+#banner #box .swiper-btn li:first-child {
+  border-radius: 0px 5px 5px 0px;
+}
+
+#banner #box .swiper-btn li:last-child {
+  border-radius: 5px 0px 0px 5px;
+}
+
+/* sale */
+#saleTop {
+}
+
+#saleTop .salelist-box {
+  width: 100%;
+  height:360px;
+  overflow: hidden;
+  padding:0;
+  padding-bottom: 20px;
+  position:relative;
+}
+
+#saleTop .salelist-box .salelist {
+  display: flex;
+  flex-wrap: nowrap;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+#saleTop .salelist-box .salelist a{
+  text-decoration: none;
+}
+#saleTop .salelist-box .salelist li {
+  width: 230px;
+  background: #fff;
+  margin: 6px;
+  border-radius: 4px;
+  padding-bottom: 10px;
+}
+
+#saleTop .salelist-box .salelist li:hover{
+  transform: translateY(-8px);
+  transition: .5s;
+}
+
+#saleTop .salelist-box .salelist li img {
+  width: 228px;
+  height: 230px;
+}
+
+#saleTop .salelist-box .salelist li p {
+  color: #96b1ac;
+  font-size: 14px;
+  padding: 0px 10px;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+#saleTop .salelist-box .salelist li .iconfont {
+  font-size: 14px;
+}
+
+#saleTop .salelist-box .salelist li div {
+  color: #e5e5e5;
+  font-size: 14px;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+#saleTop .salelist-box .salelist li div span {
+  color: #ff9000;
+}
+
+#saleTop .salelist-box .salelist li div button {
+  border: none;
+  width: 70px;
+  height: 26px;
+  background: #96b1ac;
+  border-radius: 13px;
+  color: #fff;
+}
+
+#saleTop .salelist-box .saleswiper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#saleTop .salelist-box .saleswiper li {
+  height: 8px;
+  width: 8px;
+  background: #96b1ac;
+  margin: 0px 3px;
+  border-radius: 50%;
+}
+
+#saleTop .salelist-box .saleswiper .active {
+  background: #235952;
+}
+/* 好评 */
+#praise {
+  padding-bottom: 50px;
+}
+
+#praise .content-box {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+#praise .content-box .swiper-container {
+ height:400px;
+ width:100%;
+}
+
+/* #praise .content-box  .swiper-wrapper {
+  
+  height: 340px;
+  width: 710px;
+} */
+
+#praise .content-box  .swiper-wrapper .swiper-slide{
+ width:400px; 
+} 
+
+#praise .content-box .nextbtn {
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #96b1ac;
+  position: absolute;
+  right: 238px;
+  bottom: 0px;
+  background: #fff;
+}
+
+#praise .content-box .nextbtn i {
+  font-size: 14px;
+}
+
+/* 分类 */
+
+#more {
+  padding-bottom: 50px;
+}
+
+#more .menulist {
+  height: 40px;
+  display: flex;
+  background: #dae1e7;
+  justify-content: center;
+}
+
+
+#more .menulist li {
+  width: 100px;
+  font-size: 16px;
+  line-height: 40px;
+  margin-right: 20px;
+  text-align: center;
+  color: #666;
+  cursor: pointer;
+  margin:0;
+}
+
+#more .menulist li:hover {
+  background: #96b1ac;
+  color: #fff;
+}
+
+#more .menulist .active {
+  background: #96b1ac;
+  color: #fff;
+}
+
+/* 列表样式 */
+#more .list-item{
+  width:260px;
+  padding:10px;
+  box-sizing: border-box;
+  background:#fff;
+  margin:20px;
+}
+
+#more .content-box .panel-primary{
+  border:none;
+  border-radius: 4px;
+}
+#more .content-box {
+  
+}
+  
+#more .content-box .thumbnail{
+  margin: 0;
+  border:none;
+  background: #fff;
+}
+#more .content-box .panel-footer{
+ 
+  border:none;
+  padding-bottom:0;
+  padding-top:0px;
+  background: #fff;
+}
+
+#more .content-box .panel-footer .thumbnail h3{
+  font-size: 16px;
+}
+
+#more .content-box .panel-footer .thumbnail img{
+  width:240px;
+}
+#more .content-box .panel-footer .thumbnail p:first-child{
+  height:20px;
+  line-height: 20px;
+}
+
+#more .content-box .panel-footer .thumbnail p:last-child{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+  margin-bottom:0;
+}
+
+#more .content-box .panel-footer .row div{
+  border:none;
+}
+
+#more .content-box .panel h3{
+  color:#333;
+  text-align: left;
+  margin-bottom:0px;
+}
+
+#more .content-box .panel span{
+  font-size: 16px;
+  color:#ff9000;
+}
+
+#more .content-box .panel  .newbtn{
+  padding:0;
+  width:70px;
+  height:30px;
+  display: block;
+  background:#fff;
+  color:#fff;
+  border:1px #ff9000 solid;
+  border-radius: 15px;
+  margin-left:10px;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 30px;
+}
+#more .content-box .panel .newbtn {
+  font-size: 14px;
+  color:#ff9000;
+}
+#more .content-box .panel .btn:hover{
+
+}
+
+
+
+
+#more .navigation{
+  display: flex;
+  justify-content: center;
+}
+#more .navigation a{
+  width:50px;
+  height: 30px;
+  text-align: center;
+  display: inline-block;
+  padding:5px 0px;
+  background:#96b1ac;
+  margin:0px 5px;
+  box-sizing: border-box;
+  color:#666;
+}
+#more .navigation span{
+  display: inline-block;
+  width:50px;
+  padding:5px 0px;
+  text-align: center;
+  /* background: #235952; */
+  border: 1px #ccc solid;
+  color:#235952;
+  box-sizing: border-box;
+  height:30px;
+}
+#more .navigation a:first{
+
+}
+
+
+
+

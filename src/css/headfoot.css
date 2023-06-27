@@ -1,0 +1,304 @@
+/* 头部样式 */
+/* 头部 */
+#head-top{
+    width:100%;
+    position:fixed;
+    z-index:2;
+    top:0;
+}
+#head-top .container-wrap:first-child{
+    height:40px;
+    width:100%;
+    background:#235952;
+}
+#head-top .container{
+    height:40px;
+}
+#head-top .cs{
+    height:40px;
+    display: flex;
+    align-items: center;
+    font-size:14px;
+    color:#fff;
+}
+#head-top .cs i:nth-of-type(1){
+    font-size:20px;
+    color:#fff;
+    margin-right:10px;
+    cursor: pointer;
+}
+#head-top .cs i:nth-of-type(2){
+    font-size:20px;
+    color:#fff;
+    margin-right:5px;
+}
+#head-top .seach{
+    width:300px;  
+    height:100%;
+    display: flex;  
+    align-items: center;
+    position: relative;
+}
+#head-top .seach input{
+    text-align: left ;
+    display:block;
+    height:30px;
+    flex:1;
+    border:none;
+    border-radius: 20px 0px 0px 20px;
+    border:1px #ff9000 solid;
+    border-right:none;
+    box-sizing: border-box;
+    padding-left:15px;
+    color:#bbb;
+    line-height: 30px;
+    letter-spacing: 1px;
+    outline: none;
+}
+#head-top .seach .seach-btn{
+    width:30px;
+    height:30px;
+    background:#ff9000;
+    color:#fff;
+    font-size:16px;
+    text-align: center;
+    line-height:30px;
+    border-radius:0px 20px 20px 0px;
+    cursor: pointer;
+}
+#head-top .seach a{
+    position: absolute;
+    color:#999;
+    background:#f1f3f4;
+    height:18px;
+    font-size:14px;
+    padding: 0px 5px;
+    color:#999;
+    display: block;
+    border-radius:9px;
+    line-height:18px;
+}
+#head-top .seach a:nth-of-type(1){
+    top:calc(50% - 9px);
+    left:94px;
+}
+#head-top .seach a:nth-of-type(2){
+    top:calc(50% - 9px);
+    left:176px;
+}
+#head-menu {
+    height:40px;
+    background:#fff;
+    
+}
+#head-menu .logo{
+    width:120px;
+    height:100%;
+    background:url(../images/logo.png) no-repeat center center;
+    background-size: auto 30px;
+}
+#head-menu .head-list{
+   height:40px;
+   margin-left:355px;
+}
+#head-menu .head-list li{
+    height: 40px;
+    padding:0px 15px;
+    float:left;
+}
+#head-menu .head-list li a{
+    display:block;
+    line-height: 40px;
+    color:#666;
+    font-size:16px;
+    position: relative;
+}
+#head-menu .head-list li a:hover{
+    color:#ff9000;
+}
+
+#head-menu .head-list li .active{
+    color:#ff9000;
+}
+#head-menu .head-list li .active:after{
+    display: block;
+    content: "";
+    width:50%;
+    height:4px;
+    position: absolute;
+    top:39px;
+    left:50%;
+    transform: translateX(-50%);
+    background:#ff5000;
+    border-radius: 2px;
+}
+#head-menu .list-right{
+      height:40px;
+      line-height: 40px;
+}
+#head-menu .list-right .personal{
+    height: 40px;
+    padding:0px 20px;
+    font-size:16px;
+    color:#235952;
+    line-height:40px;
+    float:right;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+#head-menu .list-right .personal:hover{
+    background:#000;
+    color:#fff;
+
+}
+
+#head-menu .list-right .personal .p-head{
+    width:34px;
+    height:34px;
+    border-radius: 50%;
+    background: #ccc;
+    display: none;
+    cursor: pointer;
+}
+#head-menu .list-right .personal .p-head ul{
+    position: absolute;
+    top:100%;
+    right:0px;
+    z-index: 4;
+    background:#fff;
+    box-shadow: 5px 0px 10px 0px #00000040;
+    border-radius: 0px 0px 4px 4px;
+    padding-bottom:5px;
+    display: none;
+}
+#head-menu .list-right .personal:hover ul{
+    display: block;
+}
+#head-menu .list-right .personal .p-head ul li{
+    width:150px;
+    
+    box-sizing: border-box;
+}
+#head-menu .list-right .personal .p-head ul li a{
+    font-weight: 400;
+    display:block;
+    padding:0px 20px;
+}
+#head-menu .list-right .personal .p-head ul li a:hover{
+    background:#96b1ac;
+}
+#head-menu .list-right .personal .log-in{
+    display: block;
+    text-align:center;
+    font-size:16px;
+    color: inherit;
+    line-height:40px;
+}
+#head-menu .list-right .icon-cart-icon{
+    margin-left:15px;
+    margin-right:30px;
+    cursor: pointer;
+}
+#head-menu .list-right .iconfont {
+    font-size:20px;
+    color:#666;
+}
+
+
+/* 底部样式 */
+
+#moreServer{
+    padding:40px 0px;
+    background:#fff;
+}
+#moreServer .ms_title{
+    display: flex;
+}
+#moreServer .ms_title li{
+    width:160px;
+    font-size: 14px;
+    line-height: 1.25;
+    color: #424242;
+}
+#moreServer .ms_title li ul{
+    width:160px;
+    margin-top:26px;
+}
+#moreServer .ms_title li ul li{
+    width:160px;
+    padding:0;
+    margin:0;
+    margin-top:10px;
+}
+#moreServer .ms_title li ul li a{
+    color:#757575;
+    font-size: 12px;
+}
+#moreServer .ms_title li ul li a:hover{
+    color:#ff6700;
+}
+#moreServer .ms_title .last_li{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left:1px solid #ccc;
+}
+#moreServer .ms_title .last_li span{
+    margin: 0 0 5px;
+    font-size: 22px;
+    line-height: 1;
+    color: #ff6700;
+}
+#moreServer .ms_title .last_li p{
+    margin: 0 0 16px;
+    font-size: 12px;
+    text-align: center;
+    color: #616161;
+}
+#moreServer .ms_title .last_li a{
+   width:118px;
+   height:28px;
+   text-align: center;
+   line-height: 28px;
+   border:1px solid #ff6700;
+   background: #fff;
+   color: #ff6700;
+}
+#moreServer .ms_title .last_li a:hover{
+    background:#ff6700;
+    color:#fff;
+}
+footer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding:50px 0px !important;
+}
+footer .logo{
+    height:60px;
+}
+footer .contact-information{
+    border-right: 1px solid #ccc;
+    padding-right: 50px;
+}
+footer .contact-information p{
+    font-size:14px;
+    color:#999;
+}
+footer .license{
+
+}
+footer .license p{
+    font-size:14px;
+    color:#999;
+}
+footer .license p a{
+    color:#999;
+    line-height: 16px;
+}
+footer .license p a span{
+    font-size:10px;
+}
